@@ -3,7 +3,10 @@ package petproject.app.UI;
 import petproject.app.Calculator;
 import petproject.app.InputManager;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.JTextPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
