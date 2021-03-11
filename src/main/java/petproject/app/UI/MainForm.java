@@ -148,6 +148,19 @@ public class MainForm {
                 inputField.setText("");
             }
         });
+//        inputField.addKeyListener(new KeyAdapter() {
+//            @Override
+//            public void keyTyped(KeyEvent e) {
+//                super.keyTyped(e);
+//                updateInputFromField(String.valueOf(e.getKeyChar()));
+//            }
+//        });
+//        inputField.addCaretListener(new CaretListener() {
+//            @Override
+//            public void caretUpdate(CaretEvent caretEvent) {
+//
+//            }
+//        });
     }
     public JPanel getMainPanel() {
         return mainPanel;
@@ -155,7 +168,13 @@ public class MainForm {
     private void refreshInputField(String text) {
         InputManager.addToInput(text, inputField);
     }
+    private void updateInputFromField (String text){
+        InputManager.addToInput(text);
+    }
     private void refreshCalcLog () {
         calcLog.setText(Calculator.getLogItem());
+    }
+    private void refreshCalcLog (String s) {
+        calcLog.setText(Calculator.updateLogItem(s));
     }
 }

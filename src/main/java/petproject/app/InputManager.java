@@ -9,6 +9,9 @@ public class InputManager {
         inputString += symbol;
         text.setText(inputString);
     }
+    public static void addToInput (String line) {
+        inputString = line;
+    }
     public static void cleanInput() {
         inputString="";
     }
