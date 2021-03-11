@@ -94,4 +94,9 @@ public class Calculator {
         logItem = calculateResult() + "\n" + logItem + "\n";
         return logItem;
     }
+
+    public  static String updateLogItem(String s) {
+        logItem = s + "\n" + logItem;
+        return logItem;
+    }
 }

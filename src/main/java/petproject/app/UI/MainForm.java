@@ -2,6 +2,7 @@ package petproject.app.UI;
 
 import petproject.app.Calculator;
 import petproject.app.InputManager;
+import petproject.app.RPNCalculator;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -106,8 +107,14 @@ public class MainForm {
         keyEquals.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                Calculator.parseInput(InputManager.getInputString());
-                refreshCalcLog();
+//                Calculator.parseInput(InputManager.getInputString());
+//                refreshCalcLog();
+                try {
+                    updateInputFromField(inputField.getText());
+                    refreshCalcLog(RPNCalculator.calc(InputManager.getInputString()).toString());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
         keyPlus.addActionListener(new ActionListener() {
