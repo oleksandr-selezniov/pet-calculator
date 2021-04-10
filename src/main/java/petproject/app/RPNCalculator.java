@@ -24,10 +24,8 @@ public class RPNCalculator {
         String[] s = input.split(" ");
         LinkedList<Double> numbers = new LinkedList<>();
         LinkedList<String> operations = new LinkedList<>();
-        String opRegex = "[+\\-*/]";
-        String numRegex = "^\\d+(?:\\.\\d+)?$";
-        Pattern operation = Pattern.compile(opRegex, Pattern.MULTILINE);
-        Pattern number = Pattern.compile(numRegex, Pattern.MULTILINE);
+        Pattern operation = Pattern.compile("[+\\-*/]");
+        Pattern number = Pattern.compile("^\\d+(?:\\.\\d+)?$");
         for (int i=0; i<s.length; i++) {
             s[i] = s[i].strip();
             Matcher matchOp = operation.matcher(s[i]);
