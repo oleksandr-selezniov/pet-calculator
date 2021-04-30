@@ -20,7 +20,8 @@ public class RPNCalculator {
             case "/" -> num.addFirst(l / r);
         }
     }
-    public static Double calc (String input) throws Exception {
+
+    public static Double calc (String input) throws IllegalArgumentException {
         String[] s = input.split(" ");
         LinkedList<Double> numbers = new LinkedList<>();
         LinkedList<String> operations = new LinkedList<>();
@@ -51,7 +52,7 @@ public class RPNCalculator {
                 else if (matchNum.matches()) {
                         numbers.addFirst(Double.parseDouble(s[i]));
                 }
-                else throw new Exception();
+                else throw new IllegalArgumentException();
             }
         }
         while (!operations.isEmpty()) {

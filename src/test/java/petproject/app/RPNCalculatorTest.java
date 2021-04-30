@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 public class RPNCalculatorTest {
 
     @Test
-    public void calc() throws Exception {
+    public void calc() throws IllegalArgumentException {
         TestResourceLoader resources = new TestResourceLoader();
         double[] actual = new double[resources.expected.length];
         int i=0;
