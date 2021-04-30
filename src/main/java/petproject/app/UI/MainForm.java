@@ -2,6 +2,7 @@ package petproject.app.UI;
 
 import petproject.app.Calculator;
 import petproject.app.InputManager;
+import petproject.app.Memory;
 import petproject.app.RPNCalculator;
 
 import javax.swing.JButton;
@@ -111,7 +112,7 @@ public class MainForm {
 //                refreshCalcLog();
                 try {
                     updateInputFromField(inputField.getText());
-                    refreshCalcLog(RPNCalculator.calc(InputManager.getInputString()).toString());
+                    refreshCalcLog(String.valueOf(InputManager.getLastOperationResult()));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -161,6 +162,25 @@ public class MainForm {
 //
 //            }
 //        });
+        keyM.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                Memory.storeToMemory(InputManager.getLastOperationResult());
+            }
+        });
+        keyMPlus.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                Memory.increaseMemory(InputManager.getLastOperationResult());
+            }
+        });
+        keyMRecall.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                inputField.setText(String.valueOf(Memory.recallFromMemory()));
+                updateInputFromField(inputField.getText());
+            }
+        });
     }
     public JPanel getMainPanel() {
         return mainPanel;
@@ -169,7 +189,7 @@ public class MainForm {
         InputManager.addToInput(text, inputField);
     }
     private void updateInputFromField (String text){
-        InputManager.addToInput(text);
+        InputManager.updateInput(text);
     }
     private void refreshCalcLog () {
         calcLog.setText(Calculator.getLogItem());

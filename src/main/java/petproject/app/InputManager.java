@@ -4,13 +4,19 @@ import javax.swing.*;
 
 public class InputManager {
     private static String inputString="";
+    private static double lastOperationResult;
+
+    public static double getLastOperationResult() {
+        return lastOperationResult;
+    }
 
     public static void addToInput (String symbol, JTextField text) {
         inputString += symbol;
         text.setText(inputString);
     }
-    public static void addToInput (String line) {
+    public static void updateInput(String line) {
         inputString = line;
+        lastOperationResult = (RPNCalculator.calc(inputString));
     }
     public static void cleanInput() {
         inputString="";
