@@ -177,7 +177,7 @@ public class MainForm {
         keyMRecall.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                inputField.setText(String.valueOf(Memory.recallFromMemory()));
+                refreshInputField(String.valueOf(Memory.recallFromMemory()));
                 updateInputFromField(inputField.getText());
             }
         });
