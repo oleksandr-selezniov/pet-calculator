@@ -3,12 +3,8 @@ package petproject.app.UI;
 import petproject.app.Calculator;
 import petproject.app.InputManager;
 import petproject.app.Memory;
-import petproject.app.RPNCalculator;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.JTextPane;
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -37,6 +33,8 @@ public class MainForm {
     private JButton keyDot;
     private JButton keyClean;
     private JPanel mainPanel;
+    private JPanel results;
+    private JLabel memoryLabel;
 
     public MainForm() {
         key0.addActionListener(new ActionListener() {
@@ -166,12 +164,14 @@ public class MainForm {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 Memory.storeToMemory(InputManager.getLastOperationResult());
+                updateMemoryLabel();
             }
         });
         keyMPlus.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 Memory.increaseMemory(InputManager.getLastOperationResult());
+                updateMemoryLabel();
             }
         });
         keyMRecall.addActionListener(new ActionListener() {
@@ -191,7 +191,12 @@ public class MainForm {
     private void updateInputFromField (String text){
         InputManager.updateInput(text);
     }
-    private void refreshCalcLog () {
+
+    private void updateMemoryLabel() {
+        memoryLabel.setText(String.valueOf(Memory.recallFromMemory()));
+    }
+
+    private void refreshCalcLog() {
         calcLog.setText(Calculator.getLogItem());
     }
     private void refreshCalcLog (String s) {
