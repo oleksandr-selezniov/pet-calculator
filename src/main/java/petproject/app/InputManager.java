@@ -14,6 +14,7 @@ public class InputManager {
         inputString += symbol;
         text.setText(inputString);
     }
+    //TODO cleanup in input updating methods
     public static void updateInput(String line) {
         inputString = line;
         lastOperationResult = (RPNCalculator.calc(inputString));

@@ -182,13 +182,16 @@ public class MainForm {
             }
         });
     }
+
     public JPanel getMainPanel() {
         return mainPanel;
     }
+
     private void refreshInputField(String text) {
         InputManager.addToInput(text, inputField);
     }
-    private void updateInputFromField (String text){
+
+    private void updateInputFromField(String text) {
         InputManager.updateInput(text);
     }
 
@@ -199,7 +202,8 @@ public class MainForm {
     private void refreshCalcLog() {
         calcLog.setText(Calculator.getLogItem());
     }
-    private void refreshCalcLog (String s) {
+
+    private void refreshCalcLog(String s) {
         calcLog.setText(Calculator.updateLogItem(s));
     }
 }
