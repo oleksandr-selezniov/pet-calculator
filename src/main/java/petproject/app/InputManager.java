@@ -1,6 +1,6 @@
 package petproject.app;
 
-import javax.swing.*;
+import javax.swing.JTextField;
 
 public class InputManager {
     private static String inputString="";
