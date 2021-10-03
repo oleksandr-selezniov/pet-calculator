@@ -24,7 +24,7 @@ public class Calculator {
             }
         }
     }
-    public static double[] calculateMultDiv (String[] input) {
+    private static double[] calculateMultDiv (String[] input) {
         double[] i = new double[input.length];
         for (int counter_i=0; counter_i < input.length; counter_i++) {
             if (!input[counter_i].strip().equals("")) {
