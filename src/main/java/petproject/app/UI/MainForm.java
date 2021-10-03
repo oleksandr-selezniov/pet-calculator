@@ -37,115 +37,34 @@ public class MainForm {
     private JLabel memoryLabel;
 
     public MainForm() {
-        key0.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                refreshInputField("0");
-            }
-        });
-        key1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                refreshInputField("1");
-            }
-        });
-        key2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                refreshInputField("2");
-            }
-        });
-        key3.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                refreshInputField("3");
-            }
-        });
-        key4.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                refreshInputField("4");
-            }
-        });
-        key5.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                refreshInputField("5");
-            }
-        });
-        key6.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                refreshInputField("6");
-            }
-        });
-        key7.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                refreshInputField("7");
-            }
-        });
-        key8.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                refreshInputField("8");
-            }
-        });
-        key9.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                refreshInputField("9");
-            }
-        });
-        keyDot.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                refreshInputField(".");
-            }
-        });
-        keyEquals.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
+        key0.addActionListener(actionEvent -> refreshInputField("0"));
+        key1.addActionListener(actionEvent -> refreshInputField("1"));
+        key2.addActionListener(actionEvent -> refreshInputField("2"));
+        key3.addActionListener(actionEvent -> refreshInputField("3"));
+        key4.addActionListener(actionEvent -> refreshInputField("4"));
+        key5.addActionListener(actionEvent -> refreshInputField("5"));
+        key6.addActionListener(actionEvent -> refreshInputField("6"));
+        key7.addActionListener(actionEvent -> refreshInputField("7"));
+        key8.addActionListener(actionEvent -> refreshInputField("8"));
+        key9.addActionListener(actionEvent -> refreshInputField("9"));
+        keyDot.addActionListener(actionEvent -> refreshInputField("."));
+        keyEquals.addActionListener(actionEvent -> {
 //                Calculator.parseInput(InputManager.getInputString());
 //                refreshCalcLog();
-                try {
-                    updateInputFromField(inputField.getText());
-                    refreshCalcLog(String.valueOf(InputManager.getLastOperationResult()));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+            try {
+                updateInputFromField(inputField.getText());
+                refreshCalcLog(String.valueOf(InputManager.getLastOperationResult()));
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         });
-        keyPlus.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                refreshInputField(" + ");
-            }
-        });
-        keyMinus.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                refreshInputField(" - ");
-            }
-        });
-        keyMultiply.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                refreshInputField(" * ");
-            }
-        });
-        keyDivide.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                refreshInputField(" / ");
-            }
-        });
-        keyClean.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                InputManager.cleanInput();
-                inputField.setText("");
-            }
+        keyPlus.addActionListener(actionEvent -> refreshInputField(" + "));
+        keyMinus.addActionListener(actionEvent -> refreshInputField(" - "));
+        keyMultiply.addActionListener(actionEvent -> refreshInputField(" * "));
+        keyDivide.addActionListener(actionEvent -> refreshInputField(" / "));
+        keyClean.addActionListener(actionEvent -> {
+            InputManager.cleanInput();
+            inputField.setText("");
         });
 //        inputField.addKeyListener(new KeyAdapter() {
 //            @Override
@@ -160,26 +79,17 @@ public class MainForm {
 //
 //            }
 //        });
-        keyM.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                Memory.storeToMemory(InputManager.getLastOperationResult());
-                updateMemoryLabel();
-            }
+        keyM.addActionListener(actionEvent -> {
+            Memory.storeToMemory(InputManager.getLastOperationResult());
+            updateMemoryLabel();
         });
-        keyMPlus.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                Memory.increaseMemory(InputManager.getLastOperationResult());
-                updateMemoryLabel();
-            }
+        keyMPlus.addActionListener(actionEvent -> {
+            Memory.increaseMemory(InputManager.getLastOperationResult());
+            updateMemoryLabel();
         });
-        keyMRecall.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                refreshInputField(String.valueOf(Memory.recallFromMemory()));
-                updateInputFromField(inputField.getText());
-            }
+        keyMRecall.addActionListener(actionEvent -> {
+            refreshInputField(String.valueOf(Memory.recallFromMemory()));
+            updateInputFromField(inputField.getText());
         });
     }
 
